@@ -1,6 +1,9 @@
 const Banner = () => {
   return (
-    <div className="container mx-auto text-center bg-[url('./banner.png')] bg-cover bg-center rounded-3xl lg:py-28 space-y-7 p-4">
+    <div
+      className="container mx-auto text-center  bg-cover bg-center rounded-3xl lg:py-28 space-y-7 p-4"
+      style={{ backgroundImage: `url("./banner.png")` }}
+    >
       <h1 className="text-white text-6xl font-bold lg:px-28">
         Discover an exceptional cooking class tailored for you!
       </h1>

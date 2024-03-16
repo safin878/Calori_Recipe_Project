@@ -1,4 +1,5 @@
-const Card = ({ item }) => {
+import PropTypes from "prop-types";
+const Card = ({ item, handleCardClick }) => {
   const {
     recipe_image,
     recipe_name,
@@ -36,7 +37,10 @@ const Card = ({ item }) => {
           </div>
         </div>
         <div className="card-actions">
-          <button className="btn bg-primary-color border-none rounded-full">
+          <button
+            onClick={() => handleCardClick(item)}
+            className="btn bg-primary-color border-none rounded-full"
+          >
             Want to Cook
           </button>
         </div>
@@ -44,5 +48,7 @@ const Card = ({ item }) => {
     </div>
   );
 };
-
+Card.propTypes = {
+  item: PropTypes.object.isRequired,
+};
 export default Card;

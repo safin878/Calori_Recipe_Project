@@ -5,20 +5,35 @@ import { useEffect } from "react";
 
 const RecipeContainer = () => {
   const [cards, setCards] = useState([]);
+  const [dish, setDish] = useState([]);
   useEffect(() => {
     fetch("./items.json")
       .then((response) => response.json())
       .then((data) => setCards(data));
   }, []);
+  const handleCardClick = (d) => {
+    const isExist = dish.find((item) => item.recipe_id === d.recipe_id);
+    if (!isExist) {
+      setDish([...dish, d]);
+    } else {
+      alert("It have");
+    }
+  };
   return (
     <div className="mx-auto container grid grid-cols-1 lg:grid-cols-3">
       <div className="md:col-span-2 grid  md:grid-cols-2 gap-5 md:p-4">
         {cards.map((item) => {
-          return <Card key={item.recipe_id} item={item}></Card>;
+          return (
+            <Card
+              handleCardClick={handleCardClick}
+              key={item.recipe_id}
+              item={item}
+            ></Card>
+          );
         })}
       </div>
       <div>
-        <Sidebar></Sidebar>
+        <Sidebar dish={dish}></Sidebar>
       </div>
     </div>
   );

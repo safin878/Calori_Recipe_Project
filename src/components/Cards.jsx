@@ -1,12 +1,9 @@
-const Card = () => {
+const Card = ({ item }) => {
+  const { recipe_image } = item;
   return (
     <div className="card w-full bg-base-100 border-[#8787872A] border-2">
       <figure className="px-10 pt-10">
-        <img
-          src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-          alt="Shoes"
-          className="rounded-xl"
-        />
+        <img src={recipe_image} alt="Shoes" className="rounded-xl" />
       </figure>
       <div className="card-body">
         <h2 className="text-xl">Spaghetti Bolognese</h2>

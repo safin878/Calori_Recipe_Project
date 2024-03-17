@@ -12,13 +12,18 @@ const RecipeContainer = () => {
       .then((response) => response.json())
       .then((data) => setCards(data));
   }, []);
+
   const handleCardClick = (d) => {
     const isExist = dish.find((item) => item.recipe_id === d.recipe_id);
     if (!isExist) {
       setDish([...dish, d]);
     } else {
-      toast.warn("This recipe have already added.");
+      toast.warn("This recipe is already exist.");
     }
+  };
+  const handleDelete = (id) => {
+    const newDish = dish.filter((item) => item.recipe_id !== id);
+    setDish(newDish);
   };
   return (
     <div className="mx-auto container grid grid-cols-1 lg:grid-cols-3">
@@ -34,7 +39,7 @@ const RecipeContainer = () => {
         })}
       </div>
       <div>
-        <Sidebar dish={dish}></Sidebar>
+        <Sidebar dish={dish} handleDelete={handleDelete}></Sidebar>
       </div>
     </div>
   );

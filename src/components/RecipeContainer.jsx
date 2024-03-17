@@ -2,6 +2,7 @@ import { useState } from "react";
 import Card from "./Cards";
 import Sidebar from "./Sidebar";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 const RecipeContainer = () => {
   const [cards, setCards] = useState([]);
@@ -16,7 +17,7 @@ const RecipeContainer = () => {
     if (!isExist) {
       setDish([...dish, d]);
     } else {
-      alert("It have");
+      toast.warn("This recipe have already added.");
     }
   };
   return (

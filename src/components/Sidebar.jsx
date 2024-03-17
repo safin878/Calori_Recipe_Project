@@ -5,7 +5,7 @@ const Sidebar = ({ dish }) => {
     <div className="border-[#8787872A] border-2 rounded-xl m-4">
       <div className="p-4">
         <h1 className="text-2xl text-center font-semibold">
-          Want to cook: {dish.length}
+          Want to cook: 0{dish.length}
         </h1>
         <hr className="my-4" />
         <div className="grid grid-cols-12">

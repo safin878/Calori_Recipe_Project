@@ -1,7 +1,10 @@
+import { useState } from "react";
 import Cooking from "./Cooking";
 import SideBarInfo from "./SideBarInfo";
 
-const Sidebar = ({ dish, handleDelete }) => {
+const Sidebar = ({ dish, handleDelete, cooking, time, calorie }) => {
+  // const item = cooking.map((item) => setTime(item));
+
   return (
     <div className="border-[#8787872A] border-2 rounded-xl m-4">
       <div className="p-4">
@@ -27,7 +30,7 @@ const Sidebar = ({ dish, handleDelete }) => {
       ))}
       <div className="mt-4">
         <h1 className="text-2xl text-center font-semibold">
-          Currently cooking: 00
+          Currently cooking: 0{cooking.length}
         </h1>
         <hr className="m-4 " />
         <div className="grid grid-cols-12">
@@ -36,7 +39,17 @@ const Sidebar = ({ dish, handleDelete }) => {
           <h3 className="col-span-3">Time</h3>
           <h3 className="col-span-3 ">Calories</h3>
         </div>
-        <Cooking></Cooking>
+        <div className="my-4">
+          {cooking.map((item, index) => (
+            <Cooking index={index} key={item.recipe_id} item={item}></Cooking>
+          ))}
+        </div>
+      </div>
+      <div className="grid grid-cols-12 space-y-4  p-4 text-xs mb-4">
+        <h3 className="col-span-5 mt-4 pr-1"></h3>
+        {/* {cooking.map((cook) => console.log(cook.preparing_time))} */}
+        <h3 className="col-span-3 pr-1">Total Time = {time} minutes</h3>
+        <h3 className="col-span-4 pr-1">Total Calories = {calorie} calories</h3>
       </div>
     </div>
   );

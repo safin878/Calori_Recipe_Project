@@ -1,5 +1,6 @@
 const SideBarInfo = ({ item, index, handleDelete }) => {
   const { recipe_name, preparing_time, calories } = item;
+
   return (
     <div className="grid grid-cols-12 space-y-4 bg-[#28282808] p-4 text-xs">
       <div className="mt-6">{index + 1}</div>
